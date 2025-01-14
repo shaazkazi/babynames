@@ -94,21 +94,31 @@ if (mobileRandomBtn) {
     mobileRandomBtn.addEventListener('click', getRandomName);
 }
 
-// Set active state for mobile navigation
-const currentPage = window.location.pathname;
-const mobileNavLinks = document.querySelectorAll('.mobile-nav a[href]');
-
-mobileNavLinks.forEach(link => {
-    // Skip random and search buttons
-    if (link.id === 'mobileRandomBtn' || link.id === 'mobileSearchBtn') return;
+// Enhanced mobile navigation active state
+function updateMobileNav() {
+    const currentPath = window.location.pathname;
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a[href]');
     
-    link.classList.remove('active');
-    if (currentPage.includes('boy-names.html') && link.href.includes('boy-names.html') ||
-        currentPage.includes('girl-names.html') && link.href.includes('girl-names.html') ||
-        (currentPage === '/' || currentPage.includes('index.html')) && link.href.includes('index.html')) {
-        link.classList.add('active');
-    }
-});
+    mobileNavLinks.forEach(link => {
+        if (link.id === 'mobileRandomBtn' || link.id === 'mobileSearchBtn') return;
+        
+        const isHome = currentPath === '/' || currentPath.includes('index.html');
+        const isBoyNames = currentPath.includes('boy-names.html');
+        const isGirlNames = currentPath.includes('girl-names.html');
+        
+        if ((isHome && link.href.includes('index.html')) ||
+            (isBoyNames && link.href.includes('boy-names.html')) ||
+            (isGirlNames && link.href.includes('girl-names.html'))) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+// Call on page load
+document.addEventListener('DOMContentLoaded', updateMobileNav);
+
 
 // Initial render
 renderNames();
