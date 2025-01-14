@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>Name Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">Islamic Baby Names</a>
+        </div>
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="search" id="searchInput" placeholder="Search names...">
+                <div class="search-dropdown" id="searchResults"></div>
+            </div>
+        </div>        
+    </nav>    
+  </header>
+
+  <main>
+    <div class="name-details-container" id="nameDetails">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+
+    <div class="additional-info">
+      <div class="info-section name-facts">
+        <h3>Name Facts</h3>
+        <ul class="facts-list" id="nameFacts">
+          <!-- Facts will be populated here -->
+        </ul>
+      </div>
+
+      <div class="info-section similar-names">
+        <h3>Similar Names</h3>
+        <div class="names-grid" id="similarNames">
+          <!-- Similar names will be populated here -->
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="mobile-nav">
+    <a href="/" class="active"><i class="fas fa-home"></i></a>
+    <a href="boy-names.html"><i class="fas fa-male"></i></a>
+    <a href="girl-names.html"><i class="fas fa-female"></i></a>
+    <a href="#" id="mobileRandomBtn"><i class="fas fa-random"></i></a>
+    <a href="#" id="mobileSearchBtn"><i class="fas fa-search"></i></a>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Islamic Names</h4>
+        <p>Discover beautiful Islamic names and their meanings</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="boy-names.html" class="gender-link" data-gender="boy">Boy Names</a>
+        <a href="girl-names.html" class="gender-link" data-gender="girl">Girl Names</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Share your feedback or suggestions</p>
+        <a href="mailto:contact@islamicnames.com">contact@islamicnames.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Islamic Baby Names Directory</p>
+    </div>
+  </footer>
+
+  <script src="names.js"></script>
+  <script src="details.js"></script>
+</body>
+</html>
