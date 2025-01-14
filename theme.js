@@ -1,5 +1,25 @@
 // Theme toggle functionality
 function initThemeToggle() {
+    function showLoader() {
+        const loader = document.getElementById('loader')
+        loader.style.display = 'flex'
+    }
+
+    function hideLoader() {
+        const loader = document.getElementById('loader')
+        loader.style.opacity = '0'
+        setTimeout(() => {
+            loader.style.display = 'none'
+        }, 500)
+    }
+
+    // Show loader immediately
+    showLoader()
+
+    // Hide loader when content is loaded
+    window.addEventListener('load', () => {
+        hideLoader()
+    })
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle?.querySelector('i');
     const mobileThemeToggle = document.getElementById('mobileThemeToggle');
