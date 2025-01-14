@@ -94,6 +94,21 @@ if (mobileRandomBtn) {
     mobileRandomBtn.addEventListener('click', getRandomName);
 }
 
+// Set active state for mobile navigation
+const currentPage = window.location.pathname;
+const mobileNavLinks = document.querySelectorAll('.mobile-nav a[href]');
+
+mobileNavLinks.forEach(link => {
+    // Skip random and search buttons
+    if (link.id === 'mobileRandomBtn' || link.id === 'mobileSearchBtn') return;
+    
+    link.classList.remove('active');
+    if (currentPage.includes('boy-names.html') && link.href.includes('boy-names.html') ||
+        currentPage.includes('girl-names.html') && link.href.includes('girl-names.html') ||
+        (currentPage === '/' || currentPage.includes('index.html')) && link.href.includes('index.html')) {
+        link.classList.add('active');
+    }
+});
 
 // Initial render
 renderNames();
