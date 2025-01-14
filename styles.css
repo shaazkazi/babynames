@@ -1573,4 +1573,13 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;  /* Increased from 0.1 to 0.3 */
+}
 

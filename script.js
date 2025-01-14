@@ -5,25 +5,41 @@ const randomNameBtn = document.getElementById('randomNameBtn');
 const mobileRandomBtn = document.getElementById('mobileRandomBtn');
 
 // Initialize particles
-particlesJS('particles-js', {
-  particles: {
-    number: { value: 50 },
-    color: { value: '#4299e1' },
-    opacity: { value: 0.1 },
-    size: { value: 3 },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: '#4299e1',
-      opacity: 0.1,
-      width: 1
-    },
-    move: {
-      enable: true,
-      speed: 2
-    }
+function initParticles() {
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80 },  // Increased number of particles
+        color: { value: '#4299e1' },
+        opacity: { value: 0.5 },  // Increased opacity
+        size: { value: 4 },  // Slightly larger particles
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#4299e1',
+          opacity: 0.4,  // Increased line opacity
+          width: 1.5    // Slightly thicker lines
+        },
+        move: {
+          enable: true,
+          speed: 2
+        }
+      }
+    });
+}
+
+// Update particles when theme changes
+function updateParticles() {
+  if (window.pJSDom && window.pJSDom[0]) {
+      window.pJSDom[0].pJS.fn.vendors.destroypJS();
   }
-});
+  initParticles();
+}
+
+// Call initParticles on page load
+document.addEventListener('DOMContentLoaded', initParticles);
+
+// Add this to your theme toggle function
+document.addEventListener('themeChanged', updateParticles);
 
 // Generate letter filters
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
