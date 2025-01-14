@@ -43,9 +43,11 @@ document.addEventListener('themeChanged', updateParticles);
 
 // Generate letter filters
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-letterLinks.innerHTML = Array.from(letters)
-  .map(letter => `<a href="#" data-letter="${letter}" class="filter-btn">${letter}</a>`)
-  .join('') + '<a href="#" data-letter="all" class="filter-btn active">All</a>';
+if (letterLinks) {
+  letterLinks.innerHTML = Array.from(letters)
+      .map(letter => `<a href="#" data-letter="${letter}" class="filter-btn">${letter}</a>`)
+      .join('') + '<a href="#" data-letter="all" class="filter-btn active">All</a>';
+}
 
 // Filter buttons functionality
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -62,6 +64,8 @@ function groupNamesByLetter(namesList) {
   }
 
 function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = '') {
+  if (!namesContainer) return;
+  
   namesContainer.style.opacity = '0';
   
   setTimeout(() => {
@@ -96,7 +100,6 @@ function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = ''
     namesContainer.style.opacity = '1';
   }, 300);
 }
-
 // Random name functionality
 function getRandomName() {
   const isBoysPage = window.location.pathname.includes('boy-names');

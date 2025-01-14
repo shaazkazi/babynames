@@ -10,8 +10,16 @@ function renderNameDetails() {
         nameDetailsDiv.innerHTML = `
             <div class="name-header">
                 <a href="index.html" class="back-button">← Back</a>
-                <h1 class="name-title">${nameData.name}</h1>
+                <div class="action-buttons">
+                    <button class="filter-btn" id="copyNameBtn">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="filter-btn" id="shareNameBtn">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
             </div>
+            <h1 class="name-title">${nameData.name}</h1>
             <div class="meaning-section">
                 <h2 class="meaning-label">Meaning of ${nameData.name}</h2>
                 <p class="meaning-text">${nameData.meaning}</p>
@@ -32,6 +40,7 @@ function renderNameDetails() {
         renderSimilarNames(nameData);
         renderNameFacts(nameData);
         initializeSearch();
+        setupCopyShare(nameData);
     } else {
         nameDetailsDiv.innerHTML = `
             <div class="name-header">
@@ -126,6 +135,40 @@ function initializeSearch() {
         }
     });
 }
+
+function setupCopyShare(nameData) {
+    const copyNameBtn = document.getElementById('copyNameBtn');
+    const shareNameBtn = document.getElementById('shareNameBtn');
+
+    copyNameBtn.addEventListener('click', () => {
+        const textToCopy = `
+Name: ${nameData.name}
+Meaning: ${nameData.meaning}
+Gender: ${nameData.gender}
+Origins: ${nameData.origins ? nameData.origins.join(', ') : ''}
+
+Learn more at: ${window.location.href}
+        `.trim();
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            copyNameBtn.classList.add('copied');
+            setTimeout(() => copyNameBtn.classList.remove('copied'), 300);
+        });
+    });
+
+    shareNameBtn.addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: `Islamic Name: ${nameData.name}`,
+                text: `Check out this beautiful Islamic name: ${nameData.name} - ${nameData.meaning}`,
+                url: window.location.href
+            });
+        } else {
+            window.open(`https://twitter.com/intent/tweet?text=Check out this beautiful Islamic name: ${nameData.name}&url=${encodeURIComponent(window.location.href)}`);
+        }
+    });
+}
+
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', renderNameDetails);

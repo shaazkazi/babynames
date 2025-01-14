@@ -51,8 +51,22 @@
 
   <main>
     <div class="name-details-container" id="nameDetails">
-      <!-- Dynamic content will be inserted here -->
+    <div class="name-header">
+      <a href="/" class="back-button">
+          <i class="fas fa-arrow-left"></i> Back
+      </a>
+      <h1 class="name-title"><!-- Name inserted by JS --></h1>
+      <div class="action-buttons">
+          <button class="filter-btn" id="copyNameBtn">
+              <i class="fas fa-copy"></i>
+          </button>
+          <button class="filter-btn" id="shareNameBtn">
+              <i class="fas fa-share-alt"></i>
+          </button>
+      </div>
     </div>
+    <!-- Rest of your existing content -->
+  </div>
 
     <div class="additional-info">
       <div class="info-section name-facts">
@@ -111,3 +125,4 @@
   <script src="theme.js"></script>
 </body>
 </html>
+
