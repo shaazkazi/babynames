@@ -35,13 +35,15 @@ letterLinks.innerHTML = Array.from(letters)
 const filterButtons = document.querySelectorAll('.filter-btn');
 
 function groupNamesByLetter(namesList) {
-  return namesList.reduce((groups, name) => {
-    const letter = name.name[0].toUpperCase();
-    if (!groups[letter]) groups[letter] = [];
-    groups[letter].push(name);
-    return groups;
-  }, {});
-}
+    return namesList
+      .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically first
+      .reduce((groups, name) => {
+        const letter = name.name[0].toUpperCase();
+        if (!groups[letter]) groups[letter] = [];
+        groups[letter].push(name);
+        return groups;
+      }, {});
+  }
 
 function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = '') {
   namesContainer.style.opacity = '0';

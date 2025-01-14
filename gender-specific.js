@@ -11,12 +11,14 @@ letterLinks.innerHTML = Array.from(letters)
 const gender = document.title.toLowerCase().includes('boy') ? 'boy' : 'girl';
 
 function groupNamesByLetter(namesList) {
-  return namesList.reduce((groups, name) => {
-    const letter = name.name[0].toUpperCase();
-    if (!groups[letter]) groups[letter] = [];
-    groups[letter].push(name);
-    return groups;
-  }, {});
+  return namesList
+    .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically first
+    .reduce((groups, name) => {
+      const letter = name.name[0].toUpperCase();
+      if (!groups[letter]) groups[letter] = [];
+      groups[letter].push(name);
+      return groups;
+    }, {});
 }
 
 function renderNames(filterLetter = 'all', searchTerm = '') {
