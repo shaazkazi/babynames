@@ -41,6 +41,9 @@
         <div class="nav-links">
             <a href="boy-names.html"><i class="fas fa-male"></i> Boy Names</a>
             <a href="girl-names.html"><i class="fas fa-female"></i> Girl Names</a>
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-sun"></i>
+            </button>
         </div>
     </div>
       <div class="search-container">
@@ -88,15 +91,16 @@
       <button class="load-more-btn">Load More Names</button>
     </div>
   </main>
-
-  <div class="mobile-nav">
-    <a href="/" class="active"><i class="fas fa-home"></i></a>
-    <a href="boy-names.html"><i class="fas fa-male"></i></a>
-    <a href="girl-names.html"><i class="fas fa-female"></i></a>
-    <a href="#" id="mobileRandomBtn"><i class="fas fa-random"></i></a>
-    <a href="#" id="mobileSearchBtn"><i class="fas fa-search"></i></a>
-  </div>
-  
+    <div class="mobile-nav">
+      <a href="/" class="active"><i class="fas fa-home"></i></a>
+      <a href="boy-names.html"><i class="fas fa-male"></i></a>
+      <a href="girl-names.html"><i class="fas fa-female"></i></a>
+      <a href="#" id="mobileRandomBtn"><i class="fas fa-random"></i></a>
+      <a href="#" id="mobileSearchBtn"><i class="fas fa-search"></i></a>
+      <button id="mobileThemeToggle" class="theme-toggle">
+          <i class="fas fa-sun"></i>
+      </button>
+    </div>
 
   <footer>
     <div class="footer-content">
@@ -124,5 +128,6 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="names.js"></script>
   <script src="script.js"></script>
+  <script src="theme.js"></script>
 </body>
 </html>

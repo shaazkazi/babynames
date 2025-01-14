@@ -1279,3 +1279,188 @@ body {
     transform: translateX(-50%) scale(1);
     -webkit-transform: translateX(-50%) scale(1);
 }
+:root {
+  /* Existing variables... */
+  
+  /* Light theme (default) */
+  --bg-primary: #f7fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  
+  /* Dark theme */
+  &[data-theme="dark"] {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --card-color: #2d3748;
+    --background-color: #1a202c;
+  }
+}
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-base);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(15deg);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .name-link {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .filters {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-dropdown {
+  background: var(--bg-secondary);
+  border-color: var(--text-secondary);
+}
+
+[data-theme="dark"] .search-result-item:hover {
+  background: var(--bg-primary);
+}
+/* Align theme toggle in web view */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile navbar dark mode */
+[data-theme="dark"] .mobile-nav {
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .mobile-nav a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .mobile-nav a.active {
+  color: var(--secondary-color);
+}
+
+/* Header text colors in dark mode */
+[data-theme="dark"] .filter-section h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .filter-section h3 i {
+  color: var(--secondary-color);
+}
+
+/* Move theme toggle to mobile nav */
+.mobile-nav .theme-toggle {
+  color: var(--text-primary);
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+.mobile-nav {
+  display: flex;
+  justify-content: space-evenly; /* Changed from space-around for better spacing */
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+}
+
+.mobile-nav a, 
+.mobile-nav .theme-toggle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.mobile-nav a i,
+.mobile-nav .theme-toggle i {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Enhanced active state for dark mode */
+[data-theme="dark"] .mobile-nav a.active i {
+  color: var(--secondary-color);
+  text-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
+  transform: scale(1.2);
+}
+
+/* Unified hover effect */
+.mobile-nav a:hover i,
+.mobile-nav .theme-toggle:hover i {
+  transform: translateY(-2px);
+  color: var(--secondary-color);
+}
+
+/* Theme toggle specific styles */
+.mobile-nav .theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+[data-theme="dark"] .mobile-nav .theme-toggle i {
+  color: var(--secondary-color);
+}
+[data-theme="dark"] {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --card-color: #2d3748;
+  --background-color: #1a202c;
+}
+
+[data-theme="dark"] .name-details-container {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .info-section {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .info-section h3 {
+  color: var(--text-primary);
+  border-bottom-color: var(--secondary-color);
+}
+
+[data-theme="dark"] .facts-list li {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .meaning-text {
+  color: var(--text-primary);
+  background: rgba(66, 153, 225, 0.05);
+}
+
+[data-theme="dark"] .result-meaning {
+  color: var(--text-secondary);
+}
+

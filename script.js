@@ -204,5 +204,9 @@ document.addEventListener('click', (e) => {
   }
 });
 
+
+
+
 // Initial render
 renderNames();
+
