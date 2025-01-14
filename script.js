@@ -66,7 +66,9 @@ function groupNamesByLetter(namesList) {
 function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = '') {
   if (!namesContainer) return;
   
+  // Add fade out
   namesContainer.style.opacity = '0';
+  namesContainer.style.transform = 'translateY(10px)';
   
   setTimeout(() => {
     let filteredNames = names.filter(name => {
@@ -97,10 +99,13 @@ function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = ''
         </div>
       `).join('');
 
-    namesContainer.style.opacity = '1';
+    // Add fade in with smooth transition
+    requestAnimationFrame(() => {
+      namesContainer.style.opacity = '1';
+      namesContainer.style.transform = 'translateY(0)';
+    });
   }, 300);
-}
-// Random name functionality
+}// Random name functionality
 function getRandomName() {
   const isBoysPage = window.location.pathname.includes('boy-names');
   const isGirlsPage = window.location.pathname.includes('girl-names');
@@ -201,6 +206,20 @@ function highlightItem(items) {
   });
 }
 
+function toggleLoadAllButton() {
+    const loadMoreBtn = document.getElementById('loadMore');
+    const activeGender = document.querySelector('.gender-links .active')?.dataset.gender;
+    const activeLetter = document.querySelector('.letter-links .active')?.dataset.letter;
+    
+    if (loadMoreBtn) {
+        if (activeGender === 'all' && activeLetter === 'all') {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'block';
+        }
+    }
+}
+
 // Filter button functionality
 filterButtons.forEach(btn => {
   btn.addEventListener('click', (e) => {
@@ -217,8 +236,12 @@ filterButtons.forEach(btn => {
     localStorage.setItem('activeGenderFilter', activeGender);
     
     renderNames(activeGender, activeLetter, searchInput.value);
+    toggleLoadAllButton(); // Add this line
   });
 });
+
+// Initial state
+toggleLoadAllButton();
 
 // Restore both filters on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -248,9 +271,36 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// Add this to your existing script.js
+const loadMoreBtn = document.getElementById('loadMore');
+
+if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+        // Reset all filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // Set 'All' filters as active
+        document.querySelector('[data-gender="all"]').classList.add('active');
+        document.querySelector('[data-letter="all"]').classList.add('active');
+        
+        // Clear search
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        
+        // Reset localStorage filters
+        localStorage.removeItem('activeLetterFilter');
+        localStorage.removeItem('activeGenderFilter');
+        
+        // Show all names
+        renderNames('all', 'all', '');
+    });
+}
+
 
 
 
 // Initial render
 renderNames();
+
 
