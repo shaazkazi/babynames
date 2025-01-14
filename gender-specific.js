@@ -94,21 +94,25 @@ if (mobileRandomBtn) {
     mobileRandomBtn.addEventListener('click', getRandomName);
 }
 
-// Enhanced mobile navigation active state
+// Enhanced mobile navigation state management
 function updateMobileNav() {
     const currentPath = window.location.pathname;
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a[href]');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
     
     mobileNavLinks.forEach(link => {
-        if (link.id === 'mobileRandomBtn' || link.id === 'mobileSearchBtn') return;
+        // Skip utility buttons
+        if (link.id === 'mobileRandomBtn' || link.id === 'mobileSearchBtn') {
+            link.classList.remove('active');
+            return;
+        }
         
-        const isHome = currentPath === '/' || currentPath.includes('index.html');
-        const isBoyNames = currentPath.includes('boy-names.html');
-        const isGirlNames = currentPath.includes('girl-names.html');
+        // Check exact path matches
+        const linkPath = new URL(link.href).pathname;
+        const isActive = currentPath === linkPath || 
+                        (currentPath.endsWith('/') && linkPath.endsWith('index.html')) ||
+                        (currentPath === linkPath.replace('index.html', ''));
         
-        if ((isHome && link.href.includes('index.html')) ||
-            (isBoyNames && link.href.includes('boy-names.html')) ||
-            (isGirlNames && link.href.includes('girl-names.html'))) {
+        if (isActive) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
@@ -116,8 +120,9 @@ function updateMobileNav() {
     });
 }
 
-// Call on page load
+// Call immediately and after any navigation
 document.addEventListener('DOMContentLoaded', updateMobileNav);
+window.addEventListener('popstate', updateMobileNav);
 
 
 // Initial render
