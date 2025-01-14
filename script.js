@@ -4,6 +4,12 @@ const letterLinks = document.getElementById('letterLinks');
 const randomNameBtn = document.getElementById('randomNameBtn');
 const mobileRandomBtn = document.getElementById('mobileRandomBtn');
 
+
+const uniqueNames = Array.from(new Map(names.map(item => [item.name, item])).values());
+names.length = 0; // Clear existing array
+names.push(...uniqueNames); // Refill with unique values
+
+
 // Initialize particles
 function initParticles() {
     particlesJS('particles-js', {

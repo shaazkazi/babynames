@@ -841,3 +841,9 @@ const names = [
       }
   ]
   
+  function addNewName(newName) {
+    if (!names.some(existing => existing.name === newName.name)) {
+        names.push(newName);
+    }
+}
+  

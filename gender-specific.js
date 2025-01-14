@@ -25,7 +25,9 @@ function renderNames(filterLetter = 'all', searchTerm = '') {
   namesContainer.style.opacity = '0';
   
   setTimeout(() => {
-    let filteredNames = names.filter(name => {
+    const uniqueFilteredNames = Array.from(new Map(names.map(item => [item.name, item])).values());
+  
+    let filteredNames = uniqueFilteredNames.filter(name => {
       const genderMatch = name.gender === gender;
       const letterMatch = filterLetter === 'all' || name.name[0].toUpperCase() === filterLetter;
       const searchMatch = searchTerm === '' || name.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -54,7 +56,6 @@ function renderNames(filterLetter = 'all', searchTerm = '') {
     namesContainer.style.opacity = '1';
   }, 300);
 }
-
 // Filter buttons functionality
 const filterButtons = document.querySelectorAll('.filter-btn');
 filterButtons.forEach(btn => {
