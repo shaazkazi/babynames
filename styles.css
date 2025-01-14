@@ -1463,4 +1463,36 @@ body {
 [data-theme="dark"] .result-meaning {
   color: var(--text-secondary);
 }
+/* Enhanced search dropdown for dark mode */
+[data-theme="dark"] .search-dropdown {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-result-item {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .result-name {
+  color: var(--secondary-color);
+}
+
+/* Creative gradient for name titles in dark mode */
+[data-theme="dark"] .name-title {
+  background: linear-gradient(135deg, #63b3ed 0%, #4299e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(66, 153, 225, 0.3);
+}
+
+[data-theme="dark"] [data-gender="boy"] .name-title {
+  background: linear-gradient(135deg, #90cdf4 0%, #63b3ed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] [data-gender="girl"] .name-title {
+  background: linear-gradient(135deg, #fbb6ce 0%, #ed64a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
