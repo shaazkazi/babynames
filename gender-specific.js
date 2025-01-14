@@ -71,5 +71,29 @@ searchInput.addEventListener('input', (e) => {
   renderNames(document.querySelector('.letter-links .active').dataset.letter, e.target.value);
 });
 
+// Random name functionality for gender-specific pages
+const mobileRandomBtn = document.getElementById('mobileRandomBtn');
+
+function getRandomName() {
+    const isBoysPage = window.location.pathname.includes('boy-names');
+    const isGirlsPage = window.location.pathname.includes('girl-names');
+    
+    let filteredNames = names;
+    if (isBoysPage) {
+        filteredNames = names.filter(name => name.gender === 'boy');
+    } else if (isGirlsPage) {
+        filteredNames = names.filter(name => name.gender === 'girl');
+    }
+    
+    const randomIndex = Math.floor(Math.random() * filteredNames.length);
+    const randomName = filteredNames[randomIndex];
+    window.location.href = `name-details.html?name=${encodeURIComponent(randomName.name)}`;
+}
+
+if (mobileRandomBtn) {
+    mobileRandomBtn.addEventListener('click', getRandomName);
+}
+
+
 // Initial render
 renderNames();

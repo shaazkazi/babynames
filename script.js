@@ -2,6 +2,7 @@ const namesContainer = document.getElementById('namesContainer');
 const searchInput = document.getElementById('searchInput');
 const letterLinks = document.getElementById('letterLinks');
 const randomNameBtn = document.getElementById('randomNameBtn');
+const mobileRandomBtn = document.getElementById('mobileRandomBtn');
 
 // Initialize particles
 particlesJS('particles-js', {
@@ -80,12 +81,41 @@ function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = ''
 
 // Random name functionality
 function getRandomName() {
-  const randomIndex = Math.floor(Math.random() * names.length);
-  const randomName = names[randomIndex];
+  const isBoysPage = window.location.pathname.includes('boy-names');
+  const isGirlsPage = window.location.pathname.includes('girl-names');
+  
+  let filteredNames = names;
+  if (isBoysPage) {
+    filteredNames = names.filter(name => name.gender === 'boy');
+  } else if (isGirlsPage) {
+    filteredNames = names.filter(name => name.gender === 'girl');
+  }
+  
+  const randomIndex = Math.floor(Math.random() * filteredNames.length);
+  const randomName = filteredNames[randomIndex];
   window.location.href = `name-details.html?name=${encodeURIComponent(randomName.name)}`;
 }
 
-randomNameBtn.addEventListener('click', getRandomName);
+if (randomNameBtn) {
+  randomNameBtn.addEventListener('click', getRandomName);
+}
+
+if (mobileRandomBtn) {
+  mobileRandomBtn.addEventListener('click', getRandomName);
+}
+
+// Mobile search button functionality
+const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+if (mobileSearchBtn) {
+    mobileSearchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const searchInput = document.getElementById('searchInput');
+        searchInput.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+            searchInput.focus();
+        }, 500);
+    });
+}
 
 // Enhanced search with keyboard navigation
 let currentFocus = -1;
@@ -171,27 +201,6 @@ document.addEventListener('click', (e) => {
     searchResults.classList.remove('active');
   }
 });
-// Mobile random button functionality
-const mobileRandomBtn = document.getElementById('mobileRandomBtn');
-if (mobileRandomBtn) {
-    mobileRandomBtn.addEventListener('click', getRandomName);
-}
-// Mobile search button functionality
-const mobileSearchBtn = document.getElementById('mobileSearchBtn');
-if (mobileSearchBtn) {
-    mobileSearchBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const searchInput = document.getElementById('searchInput');
-        searchInput.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-            searchInput.focus();
-        }, 500);
-    });
-}
-
-
-
 
 // Initial render
 renderNames();
-

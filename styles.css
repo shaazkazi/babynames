@@ -1065,3 +1065,67 @@ body {
 .copied {
     animation: copied 0.3s ease-in-out;
 }
+.navbar {
+    background: var(--gradient-primary);
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.home-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-right: 2rem;
+    margin-left: -0.5rem;
+}
+
+.logo span {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: center;
+    flex: 1;
+}
+
+.nav-links {
+    min-width: 120px;
+    text-align: right;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .home-link {
+        margin-left: -0.3rem;
+    }
+
+    .logo span {
+        font-size: 1.1rem;
+    }
+}
