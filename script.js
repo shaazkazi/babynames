@@ -208,8 +208,33 @@ filterButtons.forEach(btn => {
     
     const activeGender = document.querySelector('.gender-links .active')?.dataset.gender || 'all';
     const activeLetter = document.querySelector('.letter-links .active')?.dataset.letter || 'all';
+    
+    // Save both filters
+    localStorage.setItem('activeLetterFilter', activeLetter);
+    localStorage.setItem('activeGenderFilter', activeGender);
+    
     renderNames(activeGender, activeLetter, searchInput.value);
   });
+});
+
+// Restore both filters on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLetter = localStorage.getItem('activeLetterFilter');
+  const savedGender = localStorage.getItem('activeGenderFilter');
+
+  if (savedGender && savedGender !== 'all') {
+    const genderBtn = document.querySelector(`[data-gender="${savedGender}"]`);
+    if (genderBtn) {
+      genderBtn.click();
+    }
+  }
+
+  if (savedLetter && savedLetter !== 'all') {
+    const letterBtn = document.querySelector(`[data-letter="${savedLetter}"]`);
+    if (letterBtn) {
+      letterBtn.click();
+    }
+  }
 });
 
 // Close search dropdown when clicking outside
