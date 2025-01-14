@@ -1213,3 +1213,12 @@ body {
         display: none; /* Chrome, Safari */
     }
 }
+@media (max-width: 768px) {
+    footer {
+        margin-bottom: 60px; /* Height of mobile nav + some spacing */
+    }
+
+    .footer-bottom {
+        padding-bottom: 1rem;
+    }
+}
