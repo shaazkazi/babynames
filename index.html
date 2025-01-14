@@ -40,22 +40,31 @@
     </nav>
     
     <div class="filters">
-      <div class="filter-section">
-        <h3>Gender</h3>
-        <div class="gender-links">
-          <a href="#" data-gender="boy" class="filter-btn"><i class="fas fa-male"></i> Boy Names</a>
-          <a href="#" data-gender="girl" class="filter-btn"><i class="fas fa-female"></i> Girl Names</a>
-          <a href="#" data-gender="all" class="filter-btn active">All</a>
-          <button id="randomNameBtn" class="random-btn"><i class="fas fa-random"></i> Random Name</button>
+        <div class="filter-section">
+          <h3><i class="fas fa-filter"></i> Browse Names</h3>
+          <div class="gender-links">
+            <a href="#" data-gender="boy" class="filter-btn">
+              <i class="fas fa-male"></i> Boys
+            </a>
+            <a href="#" data-gender="girl" class="filter-btn">
+              <i class="fas fa-female"></i> Girls
+            </a>
+            <a href="#" data-gender="all" class="filter-btn active">
+              <i class="fas fa-users"></i> All
+            </a>
+            <button id="randomNameBtn" class="random-btn">
+              <i class="fas fa-random"></i> Random
+            </button>
+          </div>
+        </div>
+        
+        <div class="filter-section">
+          <h3><i class="fas fa-font"></i> Browse by Letter</h3>
+          <div class="letter-links" id="letterLinks">
+            <!-- Letters added dynamically -->
+          </div>
         </div>
       </div>
-      <div class="filter-section">
-        <h3>Browse by Letter</h3>
-        <div class="letter-links" id="letterLinks">
-          <!-- Letter filters will be dynamically added here -->
-        </div>
-      </div>
-    </div>
   </header>
 
   <main>

@@ -1129,3 +1129,87 @@ body {
         font-size: 1.1rem;
     }
 }
+.filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    margin: 1.5rem auto;
+    max-width: 1200px;
+    width: 95%;
+}
+
+.filter-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.filter-section h3 i {
+    color: var(--secondary-color);
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn i {
+    font-size: 0.9rem;
+}
+
+.letter-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.letter-links .filter-btn {
+    min-width: 40px;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .letter-links {
+        gap: 0.3rem;
+    }
+
+    .letter-links .filter-btn {
+        min-width: 32px;
+        height: 32px;
+        padding: 0.3rem;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+    }
+
+    .filters {
+        padding: 1rem;
+    }
+
+    .filter-section {
+        margin-bottom: 1rem;
+    }
+
+    /* Create a scrollable horizontal letter list */
+    .letter-links {
+        display: flex;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .letter-links::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+}
