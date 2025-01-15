@@ -917,7 +917,7 @@ const names = [
         gender: "boy",
         letter: "M",
         origins: ["Islamic", "Arabic"],
-        variations: [],
+        variations: ["Mohamed", "Mohammed"],
         translations: {
           arabic: "محمد",
           urdu: "محمد",
@@ -1582,13 +1582,426 @@ const names = [
           hindi: "अज़ान",
           bangla: "আজান"
         }
-      }                       
+      },
+      {
+        name: "Danish",
+        meaning: "Name of one of the Prophet’s companions",
+        gender: "boy",
+        letter: "D",
+        origins: ["Islamic", "Arabic"],
+        variations: [],
+        translations: {
+          arabic: "دانش",
+          urdu: "دانش",
+          hindi: "दानिश",
+          bangla: "দানিশ"
+        }
+      },
+      {
+        name: "Ehsan",
+        meaning: "Powerful",
+        gender: "boy",
+        letter: "E",
+        origins: ["Islamic", "Arabic"],
+        variations: ["Ihsan"],
+        translations: {
+          arabic: "إحسان",
+          urdu: "احسان",
+          hindi: "एहसान",
+          bangla: "এহসান"
+        }
+      },
+      {
+        name: "Ehtisham",
+        meaning: "Modesty, decency",
+        gender: "boy",
+        letter: "E",
+        origins: ["Islamic", "Arabic"],
+        variations: [],
+        translations: {
+          arabic: "احتشام",
+          urdu: "احتشام",
+          hindi: "एह्तिशाम",
+          bangla: "এহতিশাম"
+        }
+      },
+      {
+        name: "Emad",
+        meaning: "Leader",
+        gender: "boy",
+        letter: "E",
+        origins: ["Islamic", "Arabic"],
+        variations: ["Imad"],
+        translations: {
+          arabic: "عماد",
+          urdu: "عماد",
+          hindi: "इमाद",
+          bangla: "ইমাদ"
+        }
+      },
+      {
+        name: "Ghaffar",
+        meaning: "Forgiving",
+        gender: "boy",
+        letter: "G",
+        origins: ["Islamic", "Arabic"],
+        variations: ["Ghafar"],
+        translations: {
+          arabic: "غفار",
+          urdu: "غفار",
+          hindi: "ग़फ्फार",
+          bangla: "ঘাফফার"
+        }
+      },
+      {
+        name: "Ghani",
+        meaning: "Rich, wealthy, prosperous",
+        gender: "boy",
+        letter: "G",
+        origins: ["Islamic", "Arabic"],
+        variations: [],
+        translations: {
+          arabic: "غني",
+          urdu: "غنی",
+          hindi: "ग़नी",
+          bangla: "ঘানি"
+        }
+      },
+      {
+        name: "Hadi",
+        meaning: "Guide, leader",
+        gender: "boy",
+        letter: "H",
+        origins: ["Islamic", "Arabic"],
+        variations: [],
+        translations: {
+          arabic: "حادي",
+          urdu: "حادی",
+          hindi: "हदी",
+          bangla: "হাদী"
+        }
+      },
+      {
+        name: "Hafeez",
+        meaning: "Trustworthy",
+        gender: "boy",
+        letter: "H",
+        origins: ["Islamic", "Arabic"],
+        variations: [],
+        translations: {
+          arabic: "حفيظ",
+          urdu: "حفیظ",
+          hindi: "हफ़ीज़",
+          bangla: "হফ়ীজ"
+        }
+      },
+      {
+        name: "Hafiz",
+        meaning: "One who memorizes the Quran",
+        gender: "boy",
+        letter: "H",
+        origins: ["Islamic", "Arabic"],
+        variations: [],
+        translations: {
+          arabic: "حافظ",
+          urdu: "حافظ",
+          hindi: "हफ़ीज़",
+          bangla: "হফ়ীজ"
+          }
+        },
+        {
+          name: "Haider",
+          meaning: "Lion",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Hyder"],
+          translations: {
+            arabic: "حيدر",
+            urdu: "حیدر",
+            hindi: "हैदर",
+            bangla: "হায়দার"
+          }
+        },
+        {
+          name: "Hammad",
+          meaning: "One who praises",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: [],
+          translations: {
+            arabic: "حماد",
+            urdu: "حماد",
+            hindi: "हमाद",
+            bangla: "হাম্মাদ"
+          }
+        },
+        {
+          name: "Hamza",
+          meaning: "Lion, strong, steadfast",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: [],
+          translations: {
+            arabic: "حمزة",
+            urdu: "حمزہ",
+            hindi: "हमज़ा",
+            bangla: "হামজা"
+          }
+        },
+        {
+          name: "Hashir",
+          meaning: "One who assembles",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: [],
+          translations: {
+            arabic: "حاشر",
+            urdu: "حاشر",
+            hindi: "हाशिर",
+            bangla: "হাশির"
+          }
+        },
+        {
+          name: "Haris",
+          meaning: "Guardian, watchman",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Harees"],
+          translations: {
+            arabic: "حارس",
+            urdu: "حارث",
+            hindi: "हारिस",
+            bangla: "হারিস"
+          }
+        },
+        {
+          name: "Hasan",
+          meaning: "To be beautiful, to be good",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Hassan"],
+          translations: {
+            arabic: "حسن",
+            urdu: "حسن",
+            hindi: "हसन",
+            bangla: "হাসান"
+          }
+        },
+        {
+          name: "Haseeb",
+          meaning: "Noble, respected",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: [],
+          translations: {
+            arabic: "حسيب",
+            urdu: "حسیب",
+            hindi: "हसीब",
+            bangla: "হাসিব"
+          }
+        },
+        {
+          name: "Hussain",
+          meaning: "Beautiful, handsome",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Hussein"],
+          translations: {
+            arabic: "حسين",
+            urdu: "حسین",
+            hindi: "हुसैन",
+            bangla: "হুসেইন"
+          }
+        },
+        {
+          name: "Huzaifa",
+          meaning: "Name of one of the Prophet’s (PBUH) companions",
+          gender: "boy",
+          letter: "H",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Huzayfah"],
+          translations: {
+            arabic: "حذيفة",
+            urdu: "حذیفہ",
+            hindi: "हुज़ैफ़ा",
+            bangla: "হুজাইফা"
+          }
+        },
+        {
+          name: "Irfan",
+          meaning: "Wisdom",
+          gender: "boy",
+          letter: "I",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Erfan"],
+          translations: {
+            arabic: "عرفان",
+            urdu: "عرفان",
+            hindi: "इरफान",
+            bangla: "ইরফান"
+          }
+        },
+        {
+          name: "Javed",
+          meaning: "Eternal",
+          gender: "boy",
+          letter: "J",
+          origins: ["Islamic", "Persian"],
+          variations: ["Jawed"],
+          translations: {
+            arabic: "جاويد",
+            urdu: "جاوید",
+            hindi: "जावेद",
+            bangla: "জাভেদ"
+          }
+        },
+        {
+          name: "Junaid",
+          meaning: "Soldier, warrior",
+          gender: "boy",
+          letter: "J",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Junayd"],
+          translations: {
+            arabic: "جنيد",
+            urdu: "جنید",
+            hindi: "जुनैद",
+            bangla: "জুনাইদ"
+          }
+        },
+        {
+          name: "Kashif",
+          meaning: "One who is generous",
+          gender: "boy",
+          letter: "K",
+          origins: ["Islamic", "Arabic"],
+          variations: [],
+          translations: {
+            arabic: "كشيف",
+            urdu: "کشیف",
+            hindi: "कशिफ",
+            bangla: "কশিফ"
+          }
+        },
+        {
+          name: "Kamran",
+          meaning: "Successful, blessed, fortunate",
+          gender: "boy",
+          letter: "K",
+          origins: ["Islamic", "Persian"],
+          variations: ["Camran"],
+          translations: {
+            arabic: "كامران",
+            urdu: "کامران",
+            hindi: "कामरान",
+            bangla: "কামরান"
+          }
+        },
+        {
+          name: "Laraib",
+          meaning: "Faultless, without a doubt",
+          gender: "girl",
+          letter: "L",
+          origins: ["Islamic", "Arabic"],
+          variations: [],
+          translations: {
+            arabic: "لاریب",
+            urdu: "لاریب",
+            hindi: "लारैब",
+            bangla: "লারাইব"
+          }
+        },
+        {
+          name: "Maaz",
+          meaning: "Brave man",
+          gender: "boy",
+          letter: "M",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Ma'as"],
+          translations: {
+            arabic: "معاذ",
+            urdu: "معاذ",
+            hindi: "माज़",
+            bangla: "মাজ"
+          }
+        },
+        {
+          name: "Meerab",
+          meaning: "Water-master",
+          gender: "girl",
+          letter: "M",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Merab"],
+          translations: {
+            arabic: "ميراب",
+            urdu: "میراب",
+            hindi: "मीराब",
+            bangla: "মীরাব"
+          }
+        },
+        {
+          name: "Mohsin",
+          meaning: "Helper, humanitarian",
+          gender: "boy",
+          letter: "M",
+          origins: ["Islamic", "Arabic"],
+          variations: ["Muhsin"],
+          translations: {
+            arabic: "محسن",
+            urdu: "محسن",
+            hindi: "मोहसिन",
+            bangla: "মোহসিন"
+          }
+        },
+                
       
   ]
   
   function addNewName(newName) {
     if (!names.some(existing => existing.name === newName.name)) {
-        names.push(newName);
+      names.push(newName);
     }
-}
+  }
+  
+  // Function for the count-up animation
+  function countUp(targetElement, total, duration) {
+    const startValue = 0;
+    const increment = total / (duration * 60); // Divide total by frames (60 fps)
+    let currentValue = startValue;
+  
+    function updateCounter() {
+      currentValue += increment;
+      if (currentValue < total) {
+        targetElement.textContent = Math.floor(currentValue);
+        requestAnimationFrame(updateCounter);
+      } else {
+        targetElement.textContent = total; // Ensure it ends exactly at the total
+      }
+    }
+  
+    updateCounter();
+  }
+  
+  // Fetch unique names and gender-specific counts
+  const totalUniqueNames = new Set(names.map(n => n.name)).size;
+  const totalBoyNames = new Set(names.filter(n => n.gender === "boy").map(n => n.name)).size;
+  const totalGirlNames = new Set(names.filter(n => n.gender === "girl").map(n => n.name)).size;
+  
+  // Get the target elements
+  const nameCountElement = document.getElementById("name-count");
+  const boyCountElement = document.getElementById("boy-count");
+  const girlCountElement = document.getElementById("girl-count");
+  
+  // Trigger count-up animations for each count
+  countUp(nameCountElement, totalUniqueNames, 1);
+  countUp(boyCountElement, totalBoyNames, 1);
+  countUp(girlCountElement, totalGirlNames, 1);
   

@@ -1818,3 +1818,37 @@ body {
   align-items: center;
   justify-content: center;
 }
+.unique {
+  font-size: 1.2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center-align the text */
+  margin: 20px auto; /* Add spacing around the text */
+  padding: 10px; /* Add some padding for better appearance */
+  background-color: #f9f9f9; /* Light background color for distinction */
+  border: 1px solid #1a202c; /* Optional: Add a border for styling */
+  border-radius: 5px; /* Slightly rounded corners */
+  width: fit-content; /* Make the width fit the content */
+}
+
+[data-theme="dark"] .unique {
+  font-size: 1.2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center-align the text */
+  margin: 20px auto; /* Add spacing around the text */
+  padding: 10px; /* Add some padding for better appearance */
+  background-color: #1a202c; /* Dark background color */
+  color: #f1f1f1; /* Light text color for contrast */
+  border: 1px solid #4299e1; /* Subtle border to match the dark theme */
+  border-radius: 5px; /* Slightly rounded corners */
+  width: fit-content; /* Make the width fit the content */
+}
+
+#name-count, #boy-count, #girl-count {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff; /* Highlighted color */
+}
+
+[data-theme="dark"] #name-count, [data-theme="dark"] #boy-count, [data-theme="dark"] #girl-count {
+  color: #00c3ff; /* Adjust color for dark mode */
+}
