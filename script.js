@@ -1,339 +1,34 @@
-const namesContainer = document.getElementById('namesContainer');
-const searchInput = document.getElementById('searchInput');
-const letterLinks = document.getElementById('letterLinks');
-const randomNameBtn = document.getElementById('randomNameBtn');
-const mobileRandomBtn = document.getElementById('mobileRandomBtn');
-
-
-const uniqueNames = Array.from(new Map(names.map(item => [item.name, item])).values());
-names.length = 0; // Clear existing array
-names.push(...uniqueNames); // Refill with unique values
-
-
-// Initialize particles
-function initParticles() {
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 80 },  // Increased number of particles
-        color: { value: '#4299e1' },
-        opacity: { value: 0.5 },  // Increased opacity
-        size: { value: 4 },  // Slightly larger particles
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: '#4299e1',
-          opacity: 0.4,  // Increased line opacity
-          width: 1.5    // Slightly thicker lines
-        },
-        move: {
-          enable: true,
-          speed: 2
-        }
-      }
-    });
-}
-
-// Update particles when theme changes
-function updateParticles() {
-  if (window.pJSDom && window.pJSDom[0]) {
-      window.pJSDom[0].pJS.fn.vendors.destroypJS();
-  }
-  initParticles();
-}
-
-// Call initParticles on page load
-document.addEventListener('DOMContentLoaded', initParticles);
-
-// Add this to your theme toggle function
-document.addEventListener('themeChanged', updateParticles);
-
-// Generate letter filters
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-if (letterLinks) {
-  letterLinks.innerHTML = Array.from(letters)
-      .map(letter => `<a href="#" data-letter="${letter}" class="filter-btn">${letter}</a>`)
-      .join('') + '<a href="#" data-letter="all" class="filter-btn active">All</a>';
-}
-
-// Filter buttons functionality
-const filterButtons = document.querySelectorAll('.filter-btn');
-
-function groupNamesByLetter(namesList) {
-    return namesList
-      .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically first
-      .reduce((groups, name) => {
-        const letter = name.name[0].toUpperCase();
-        if (!groups[letter]) groups[letter] = [];
-        groups[letter].push(name);
-        return groups;
-      }, {});
-  }
-
-function renderNames(filterGender = 'all', filterLetter = 'all', searchTerm = '') {
-  if (!namesContainer) return;
-  
-  // Add fade out
-  namesContainer.style.opacity = '0';
-  namesContainer.style.transform = 'translateY(10px)';
-  
-  setTimeout(() => {
-    let filteredNames = names.filter(name => {
-      const genderMatch = filterGender === 'all' || name.gender === filterGender;
-      const letterMatch = filterLetter === 'all' || name.name[0].toUpperCase() === filterLetter;
-      const searchMatch = searchTerm === '' || 
-        name.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        name.meaning.toLowerCase().includes(searchTerm.toLowerCase());
-      return genderMatch && letterMatch && searchMatch;
-    });
-
-    const groupedNames = groupNamesByLetter(filteredNames);
-    
-    namesContainer.innerHTML = Object.entries(groupedNames)
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([letter, namesList]) => `
+const namesContainer=document.getElementById("namesContainer"),searchInput=document.getElementById("searchInput"),letterLinks=document.getElementById("letterLinks"),randomNameBtn=document.getElementById("randomNameBtn"),mobileRandomBtn=document.getElementById("mobileRandomBtn"),uniqueNames=Array.from(new Map(names.map(e=>[e.name,e])).values());function initParticles(){particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#4299e1"},opacity:{value:.5},size:{value:4},line_linked:{enable:!0,distance:150,color:"#4299e1",opacity:.4,width:1.5},move:{enable:!0,speed:2}}})}function updateParticles(){window.pJSDom&&window.pJSDom[0]&&window.pJSDom[0].pJS.fn.vendors.destroypJS(),initParticles()}names.length=0,names.push(...uniqueNames),document.addEventListener("DOMContentLoaded",initParticles),document.addEventListener("themeChanged",updateParticles);const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ";letterLinks&&(letterLinks.innerHTML=Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map(e=>`<a href="#" data-letter="${e}" class="filter-btn">${e}</a>`).join("")+'<a href="#" data-letter="all" class="filter-btn active">All</a>');const filterButtons=document.querySelectorAll(".filter-btn");function groupNamesByLetter(e){return e.sort((e,t)=>e.name.localeCompare(t.name)).reduce((e,t)=>{let a=t.name[0].toUpperCase();return e[a]||(e[a]=[]),e[a].push(t),e},{})}function renderNames(e="all",t="all",a=""){namesContainer&&(namesContainer.style.opacity="0",namesContainer.style.transform="translateY(10px)",setTimeout(()=>{let n=names.filter(n=>{let l="all"===e||n.gender===e,r="all"===t||n.name[0].toUpperCase()===t,i=""===a||n.name.toLowerCase().includes(a.toLowerCase())||n.meaning.toLowerCase().includes(a.toLowerCase());return l&&r&&i}),l=groupNamesByLetter(n);namesContainer.innerHTML=Object.entries(l).sort(([e],[t])=>e.localeCompare(t)).map(([e,t])=>`
         <div class="letter-group">
-          <h2 class="letter-heading">${letter}</h2>
+          <h2 class="letter-heading">${e}</h2>
           <div class="names-grid">
-            ${namesList.map(name => `
-              <a href="name-details.html?name=${encodeURIComponent(name.name)}" 
+            ${t.map(e=>`
+              <a href="name-details.html?name=${encodeURIComponent(e.name)}" 
                  class="name-link" 
-                 data-gender="${name.gender}">
-                ${name.name}
+                 data-gender="${e.gender}">
+                ${e.name}
               </a>
-            `).join('')}
+            `).join("")}
           </div>
         </div>
-      `).join('');
-
-    // Add fade in with smooth transition
-    requestAnimationFrame(() => {
-      namesContainer.style.opacity = '1';
-      namesContainer.style.transform = 'translateY(0)';
-    });
-  }, 300);
-}// Random name functionality
-function getRandomName() {
-  const isBoysPage = window.location.pathname.includes('boy-names');
-  const isGirlsPage = window.location.pathname.includes('girl-names');
-  
-  let filteredNames = names;
-  if (isBoysPage) {
-    filteredNames = names.filter(name => name.gender === 'boy');
-  } else if (isGirlsPage) {
-    filteredNames = names.filter(name => name.gender === 'girl');
-  }
-  
-  const randomIndex = Math.floor(Math.random() * filteredNames.length);
-  const randomName = filteredNames[randomIndex];
-  window.location.href = `name-details.html?name=${encodeURIComponent(randomName.name)}`;
-}
-
-if (randomNameBtn) {
-  randomNameBtn.addEventListener('click', getRandomName);
-}
-
-if (mobileRandomBtn) {
-  mobileRandomBtn.addEventListener('click', getRandomName);
-}
-
-// Mobile search button functionality
-const mobileSearchBtn = document.getElementById('mobileSearchBtn');
-if (mobileSearchBtn) {
-    mobileSearchBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const searchInput = document.getElementById('searchInput');
-        searchInput.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-            searchInput.focus();
-        }, 500);
-    });
-}
-
-// Enhanced search with keyboard navigation
-let currentFocus = -1;
-
-searchInput.addEventListener('input', (e) => {
-  const searchResults = document.getElementById('searchResults');
-  const searchTerm = e.target.value.toLowerCase();
-  
-  if (searchTerm.length < 2) {
-    searchResults.classList.remove('active');
-    return;
-  }
-
-  const matches = names.filter(name => 
-    name.name.toLowerCase().includes(searchTerm) ||
-    name.meaning.toLowerCase().includes(searchTerm)
-  ).slice(0, 8);
-
-  if (matches.length) {
-    searchResults.innerHTML = matches.map(name => `
-      <a href="name-details.html?name=${encodeURIComponent(name.name)}" 
+      `).join(""),requestAnimationFrame(()=>{namesContainer.style.opacity="1",namesContainer.style.transform="translateY(0)"})},300))}function getRandomName(){let e=window.location.pathname.includes("boy-names"),t=window.location.pathname.includes("girl-names"),a=names;e?a=names.filter(e=>"boy"===e.gender):t&&(a=names.filter(e=>"girl"===e.gender));let n=Math.floor(Math.random()*a.length),l=a[n];window.location.href=`name-details.html?name=${encodeURIComponent(l.name)}`}randomNameBtn&&randomNameBtn.addEventListener("click",getRandomName),mobileRandomBtn&&mobileRandomBtn.addEventListener("click",getRandomName);const mobileSearchBtn=document.getElementById("mobileSearchBtn");mobileSearchBtn&&mobileSearchBtn.addEventListener("click",e=>{e.preventDefault();let t=document.getElementById("searchInput");t.scrollIntoView({behavior:"smooth"}),setTimeout(()=>{t.focus()},500)});let currentFocus=-1;function highlightItem(e){Array.from(e).forEach((e,t)=>{t===currentFocus?e.classList.add("focused"):e.classList.remove("focused")})}function toggleLoadAllButton(){let e=document.getElementById("loadMore"),t=document.querySelector(".gender-links .active")?.dataset.gender,a=document.querySelector(".letter-links .active")?.dataset.letter;e&&("all"===t&&"all"===a?e.style.display="none":e.style.display="block")}searchInput.addEventListener("input",e=>{let t=document.getElementById("searchResults"),a=e.target.value.toLowerCase();if(a.length<2){t.classList.remove("active");return}let n=names.filter(e=>e.name.toLowerCase().includes(a)||e.meaning.toLowerCase().includes(a)).slice(0,8);n.length?(t.innerHTML=n.map(e=>`
+      <a href="name-details.html?name=${encodeURIComponent(e.name)}" 
          class="search-result-item" 
-         data-gender="${name.gender}">
+         data-gender="${e.gender}">
         <div>
-          <div class="result-name">${name.name}</div>
-          <div class="result-meaning">${name.meaning}</div>
+          <div class="result-name">${e.name}</div>
+          <div class="result-meaning">${e.meaning}</div>
         </div>
       </a>
-    `).join('');
-    searchResults.classList.add('active');
-  } else {
-    searchResults.classList.remove('active');
-  }
-});
-
-// Keyboard navigation for search results
-searchInput.addEventListener('keydown', (e) => {
-  const searchResults = document.getElementById('searchResults');
-  const items = searchResults.getElementsByClassName('search-result-item');
-  
-  if (items.length === 0) return;
-
-  if (e.key === 'ArrowDown') {
-    currentFocus = (currentFocus + 1) % items.length;
-    highlightItem(items);
-  } else if (e.key === 'ArrowUp') {
-    currentFocus = (currentFocus - 1 + items.length) % items.length;
-    highlightItem(items);
-  } else if (e.key === 'Enter' && currentFocus > -1) {
-    e.preventDefault();
-    items[currentFocus].click();
-  }
-});
-
-function highlightItem(items) {
-  Array.from(items).forEach((item, index) => {
-    if (index === currentFocus) {
-      item.classList.add('focused');
-    } else {
-      item.classList.remove('focused');
-    }
-  });
-}
-
-function toggleLoadAllButton() {
-    const loadMoreBtn = document.getElementById('loadMore');
-    const activeGender = document.querySelector('.gender-links .active')?.dataset.gender;
-    const activeLetter = document.querySelector('.letter-links .active')?.dataset.letter;
-    
-    if (loadMoreBtn) {
-        if (activeGender === 'all' && activeLetter === 'all') {
-            loadMoreBtn.style.display = 'none';
-        } else {
-            loadMoreBtn.style.display = 'block';
-        }
-    }
-}
-
-// Filter button functionality
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const group = btn.closest('.gender-links, .letter-links');
-    group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const activeGender = document.querySelector('.gender-links .active')?.dataset.gender || 'all';
-    const activeLetter = document.querySelector('.letter-links .active')?.dataset.letter || 'all';
-    
-    // Save both filters
-    localStorage.setItem('activeLetterFilter', activeLetter);
-    localStorage.setItem('activeGenderFilter', activeGender);
-    
-    renderNames(activeGender, activeLetter, searchInput.value);
-    toggleLoadAllButton(); // Add this line
-  });
-});
-
-// Initial state
-toggleLoadAllButton();
-
-// Restore both filters on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const savedLetter = localStorage.getItem('activeLetterFilter');
-  const savedGender = localStorage.getItem('activeGenderFilter');
-
-  if (savedGender && savedGender !== 'all') {
-    const genderBtn = document.querySelector(`[data-gender="${savedGender}"]`);
-    if (genderBtn) {
-      genderBtn.click();
-    }
-  }
-
-  if (savedLetter && savedLetter !== 'all') {
-    const letterBtn = document.querySelector(`[data-letter="${savedLetter}"]`);
-    if (letterBtn) {
-      letterBtn.click();
-    }
-  }
-});
-
-// Close search dropdown when clicking outside
-document.addEventListener('click', (e) => {
-  const searchResults = document.getElementById('searchResults');
-  if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-    searchResults.classList.remove('active');
-  }
-});
-
-// Add this to your existing script.js
-const loadMoreBtn = document.getElementById('loadMore');
-
-if (loadMoreBtn) {
-    loadMoreBtn.addEventListener('click', () => {
-        // Reset all filter buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        
-        // Set 'All' filters as active
-        document.querySelector('[data-gender="all"]').classList.add('active');
-        document.querySelector('[data-letter="all"]').classList.add('active');
-        
-        // Clear search
-        if (searchInput) {
-            searchInput.value = '';
-        }
-        
-        // Reset localStorage filters
-        localStorage.removeItem('activeLetterFilter');
-        localStorage.removeItem('activeGenderFilter');
-        
-        // Show all names
-        renderNames('all', 'all', '');
-    });
-}
-
-// Add to script.js
-function toggleFavorite(nameId) {
-  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-  if (favorites.includes(nameId)) {
-      favorites = favorites.filter(id => id !== nameId);
-  } else {
-      favorites.push(nameId);
-  }
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  updateFavoriteButton(nameId);
-}
-
-// Add favorite button to name cards
-function renderNameCard(name) {
-  return `
-      <div class="name-link" data-gender="${name.gender}">
-          ${name.name}
-          <button class="favorite-btn ${isFavorite(name.name) ? 'active' : ''}" 
-                  onclick="toggleFavorite('${name.name}')">
+    `).join(""),t.classList.add("active")):t.classList.remove("active")}),searchInput.addEventListener("keydown",e=>{let t=document.getElementById("searchResults"),a=t.getElementsByClassName("search-result-item");0!==a.length&&("ArrowDown"===e.key?(currentFocus=(currentFocus+1)%a.length,highlightItem(a)):"ArrowUp"===e.key?(currentFocus=(currentFocus-1+a.length)%a.length,highlightItem(a)):"Enter"===e.key&&currentFocus>-1&&(e.preventDefault(),a[currentFocus].click()))}),filterButtons.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();let a=e.closest(".gender-links, .letter-links");a.querySelectorAll(".filter-btn").forEach(e=>e.classList.remove("active")),e.classList.add("active");let n=document.querySelector(".gender-links .active")?.dataset.gender||"all",l=document.querySelector(".letter-links .active")?.dataset.letter||"all";localStorage.setItem("activeLetterFilter",l),localStorage.setItem("activeGenderFilter",n),renderNames(n,l,searchInput.value),toggleLoadAllButton()})}),toggleLoadAllButton(),document.addEventListener("DOMContentLoaded",()=>{let e=localStorage.getItem("activeLetterFilter"),t=localStorage.getItem("activeGenderFilter");if(t&&"all"!==t){let a=document.querySelector(`[data-gender="${t}"]`);a&&a.click()}if(e&&"all"!==e){let n=document.querySelector(`[data-letter="${e}"]`);n&&n.click()}}),document.addEventListener("click",e=>{let t=document.getElementById("searchResults");searchInput.contains(e.target)||t.contains(e.target)||t.classList.remove("active")});const loadMoreBtn=document.getElementById("loadMore");function toggleFavorite(e){let t=JSON.parse(localStorage.getItem("favorites")||"[]");t.includes(e)?t=t.filter(t=>t!==e):t.push(e),localStorage.setItem("favorites",JSON.stringify(t)),updateFavoriteButton(e)}function renderNameCard(e){return`
+      <div class="name-link" data-gender="${e.gender}">
+          ${e.name}
+          <button class="favorite-btn ${isFavorite(e.name)?"active":""}" 
+                  onclick="toggleFavorite('${e.name}')">
               <i class="fas fa-heart"></i>
           </button>
       </div>
-  `;
-}
-
-// Add to script.js
-function printNameList() {
-  const printWindow = window.open('', '_blank');
-  const filteredNames = getCurrentFilteredNames();
-  
-  printWindow.document.write(`
+  `}function printNameList(){let e=window.open("","_blank"),t=getCurrentFilteredNames();e.document.write(`
       <html>
           <head>
               <title>Islamic Names List</title>
@@ -346,22 +41,13 @@ function printNameList() {
           </head>
           <body>
               <h1>Islamic Names Collection</h1>
-              ${filteredNames.map(name => `
+              ${t.map(e=>`
                   <div class="print-name">
-                      <h3>${name.name}</h3>
-                      <p>Meaning: ${name.meaning}</p>
-                      <p>Origin: ${name.origins.join(', ')}</p>
+                      <h3>${e.name}</h3>
+                      <p>Meaning: ${e.meaning}</p>
+                      <p>Origin: ${e.origins.join(", ")}</p>
                   </div>
-              `).join('')}
+              `).join("")}
           </body>
       </html>
-  `);
-  printWindow.document.close();
-  printWindow.print();
-}
-
-
-// Initial render
-renderNames();
-
-
+  `),e.document.close(),e.print()}loadMoreBtn&&loadMoreBtn.addEventListener("click",()=>{document.querySelectorAll(".filter-btn").forEach(e=>e.classList.remove("active")),document.querySelector('[data-gender="all"]').classList.add("active"),document.querySelector('[data-letter="all"]').classList.add("active"),searchInput&&(searchInput.value=""),localStorage.removeItem("activeLetterFilter"),localStorage.removeItem("activeGenderFilter"),renderNames("all","all","")}),renderNames();
