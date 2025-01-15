@@ -10,7 +10,12 @@ function renderNameDetails() {
         nameDetailsDiv.innerHTML = `
             <div class="name-header">
                 <a href="index.html" class="back-button">← Back</a>
+                <h1 class="name-title">${nameData.name}</h1>
                 <div class="action-buttons">
+                    <button class="favorite-btn ${isFavorite(nameData.name) ? 'active' : ''}" 
+                            onclick="toggleFavorite('${nameData.name}')">
+                        <i class="fas fa-heart"></i>
+                    </button>
                     <button class="filter-btn" id="copyNameBtn">
                         <i class="fas fa-copy"></i>
                     </button>
@@ -19,7 +24,6 @@ function renderNameDetails() {
                     </button>
                 </div>
             </div>
-            <h1 class="name-title">${nameData.name}</h1>
             <div class="meaning-section">
                 <h2 class="meaning-label">Meaning of ${nameData.name}</h2>
                 <p class="meaning-text">${nameData.meaning}</p>
@@ -169,6 +173,87 @@ Learn more at: ${window.location.href}
     });
 }
 
+// Add to details.js
+function addPronunciation(name) {
+    const audioUrl = `audio/${name.toLowerCase().replace(' ', '_')}.mp3`;
+    return `
+        <div class="pronunciation">
+            <button onclick="playPronunciation('${audioUrl}')">
+                <i class="fas fa-volume-up"></i> Listen
+            </button>
+            <audio id="pronunciationAudio" src="${audioUrl}"></audio>
+        </div>
+    `;
+}
+
+// Add to details.js display
+function showNameHistory(name) {
+    return `
+        <div class="name-history">
+            <h3>Historical Significance</h3>
+            <p>${name.history}</p>
+            <p class="significance">${name.significance}</p>
+        </div>
+        <div class="action-buttons">
+            <button class="favorite-btn ${isFavorite(nameData.name) ? 'active' : ''}" 
+                    onclick="toggleFavorite('${nameData.name}')">
+                <i class="fas fa-heart"></i>
+            </button>
+            <button class="filter-btn" id="copyNameBtn">
+                <i class="fas fa-copy"></i>
+            </button>
+            <button class="filter-btn" id="shareNameBtn">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+    `;
+}
+
+// Add to details.js
+function shareName(name) {
+    const shareData = {
+        title: `Islamic Name: ${name.name}`,
+        text: `${name.name}: ${name.meaning}`,
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData);
+    } else {
+        // Fallback for browsers without native sharing
+        const shareUrl = `
+            https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}
+        `;
+        window.open(shareUrl, '_blank');
+    }
+}
+
+function isFavorite(nameId) {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    return favorites.includes(nameId);
+}
+
+function toggleFavorite(nameId) {
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    if (favorites.includes(nameId)) {
+        favorites = favorites.filter(id => id !== nameId);
+    } else {
+        favorites.push(nameId);
+    }
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    updateFavoriteButton(nameId);
+}
+
+function updateFavoriteButton(nameId) {
+    const btn = document.querySelector('.favorite-btn');
+    if (btn) {
+        btn.classList.toggle('active', isFavorite(nameId));
+    }
+}
+
+
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', renderNameDetails);
+
+

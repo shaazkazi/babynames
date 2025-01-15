@@ -303,7 +303,62 @@ if (loadMoreBtn) {
     });
 }
 
+// Add to script.js
+function toggleFavorite(nameId) {
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  if (favorites.includes(nameId)) {
+      favorites = favorites.filter(id => id !== nameId);
+  } else {
+      favorites.push(nameId);
+  }
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  updateFavoriteButton(nameId);
+}
 
+// Add favorite button to name cards
+function renderNameCard(name) {
+  return `
+      <div class="name-link" data-gender="${name.gender}">
+          ${name.name}
+          <button class="favorite-btn ${isFavorite(name.name) ? 'active' : ''}" 
+                  onclick="toggleFavorite('${name.name}')">
+              <i class="fas fa-heart"></i>
+          </button>
+      </div>
+  `;
+}
+
+// Add to script.js
+function printNameList() {
+  const printWindow = window.open('', '_blank');
+  const filteredNames = getCurrentFilteredNames();
+  
+  printWindow.document.write(`
+      <html>
+          <head>
+              <title>Islamic Names List</title>
+              <style>
+                  .print-name {
+                      margin: 10px 0;
+                      page-break-inside: avoid;
+                  }
+              </style>
+          </head>
+          <body>
+              <h1>Islamic Names Collection</h1>
+              ${filteredNames.map(name => `
+                  <div class="print-name">
+                      <h3>${name.name}</h3>
+                      <p>Meaning: ${name.meaning}</p>
+                      <p>Origin: ${name.origins.join(', ')}</p>
+                  </div>
+              `).join('')}
+          </body>
+      </html>
+  `);
+  printWindow.document.close();
+  printWindow.print();
+}
 
 
 // Initial render

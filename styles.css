@@ -1694,3 +1694,127 @@ body {
       transform: translateY(0);
   }
 }
+.favorite-btn {
+  border: none;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.favorite-btn.active {
+  color: #f56565;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+.pronunciation button {
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.name-history {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+.favorite-btn {
+  background: var(--background-color);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-base);
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.favorite-btn.active {
+  color: #e53e3e;
+}
+
+[data-theme="dark"] .favorite-btn {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .favorite-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  border-color: transparent;
+}
+.favorite-btn {
+  background: var(--card-color);
+  color: var(--text-primary);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-base);
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.favorite-btn.active {
+  color: #e53e3e;
+}
+
+[data-theme="dark"] .favorite-btn {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .favorite-btn.active {
+  color: #e53e3e;
+}
+
+[data-theme="dark"] .favorite-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+}
+.favorite-btn {
+  background: var(--card-color);
+  color: var(--text-primary);
+  border: 2px solid #2d3748; /* Darker border to match copy icon */
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-base);
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

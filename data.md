@@ -1,3 +1,9 @@
+import { boyNames } from './boy-names-data.js';
+import { girlNames } from './girl-names-data.js';
+
+export const names = [...boyNames, ...girlNames];
+
+
 const names = [
     {
       name: "Abdul Ahad",
@@ -5,8 +11,6 @@ const names = [
       gender: "boy",
       letter: "A",
       origins: ["Islamic", "Arabic"],
-      history: ["Name of the beloved wife of Prophet Muhammad (peace be upon him), known for her wisdom and scholarship."],
-      significance: ["Associated with intelligence and leadership"],
       variations: ["Ahad"],
       translations: {
         arabic: "عبد الأحد",
@@ -1584,9 +1588,9 @@ const names = [
         }
       }                       
       
-  ]
-  
-  function addNewName(newName) {
+  ];
+
+  export function addNewName(newName) {
     if (!names.some(existing => existing.name === newName.name)) {
         names.push(newName);
     }
