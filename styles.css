@@ -1844,7 +1844,7 @@ body {
 }
 
 #name-count, #boy-count, #girl-count {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #007bff; /* Highlighted color */
 }
